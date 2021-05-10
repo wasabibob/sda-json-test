@@ -35,3 +35,11 @@ application {
     // Define the main class for the application.
     mainClass = 'sda.json.test.App'
 }
+
+tasks.register('copyScanAnalysisJson', Copy) {
+    from "src/main/groovy/sda/json/test/."
+    include "**/*.json"
+    into layout.buildDirectory.dir("scan/analysis")
+}
+
+build.dependsOn copyScanAnalysisJson
